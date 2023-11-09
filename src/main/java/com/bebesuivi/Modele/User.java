@@ -1,7 +1,11 @@
 package com.bebesuivi.Modele;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,4 +23,7 @@ public class User {
     private Integer Numero;
     @Column(nullable = false, unique = true)
     private String motDePasse;
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Grossesse> grossesses = new ArrayList<>();
 }
