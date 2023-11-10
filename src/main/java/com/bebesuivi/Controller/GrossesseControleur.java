@@ -1,6 +1,7 @@
 package com.bebesuivi.Controller;
 
 import com.bebesuivi.Modele.Grossesse;
+import com.bebesuivi.Modele.User;
 import com.bebesuivi.Service.GrossesseService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -22,4 +24,13 @@ public class GrossesseControleur {
         return new ResponseEntity<>(grossesseService.createGrossesse(grossesse), HttpStatus.OK);
 
     }
+    @CrossOrigin
+    @GetMapping("/read")
+    public ResponseEntity<List<Grossesse>> getgrossesse(){
+        return new ResponseEntity<>(grossesseService.getAllGrossesse(),HttpStatus.OK);}
+    @CrossOrigin
+    @GetMapping("/read/{id}")
+    // @Operation(summary = "Affichage  d'un utilisateur")
+    public ResponseEntity<Grossesse> getGrossesseById(@Valid @PathVariable long id){
+        return new ResponseEntity<>(grossesseService.getGrossesseById(id),HttpStatus.OK) ;}
 }

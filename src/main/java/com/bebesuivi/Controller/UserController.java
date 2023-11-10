@@ -9,32 +9,38 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-
+@CrossOrigin
 @RestController
 @RequestMapping("user")
 @AllArgsConstructor
 @CrossOrigin
 public class UserController {
     private final UserService userService;
+    @CrossOrigin
     @PostMapping("/create")
     public ResponseEntity<User> createUser(@Valid @RequestBody User user){
         return new ResponseEntity<>(userService.createUser(user), HttpStatus.OK);
     }
+    @CrossOrigin
     @GetMapping("/read")
     public ResponseEntity<List<User>> getuser(){
         return new ResponseEntity<>(userService.getAllUser(),HttpStatus.OK);}
+    @CrossOrigin
     @GetMapping("/read/{id}")
    // @Operation(summary = "Affichage  d'un utilisateur")
     public ResponseEntity<User> getUserById(@Valid @PathVariable long id){
         return new ResponseEntity<>(userService.getUserById(id),HttpStatus.OK) ;}
+    @CrossOrigin
     @PutMapping("/update")
   //  @Operation(summary = "Modification d'un utilisateur")
     public ResponseEntity<User>  editUtilisateur(@Valid @RequestBody User user){
         return new ResponseEntity<>( userService.editutilisateur(user),HttpStatus.OK);}
+    @CrossOrigin
     @DeleteMapping("/delete")
     //@Operation(summary = "Suppression d'un utilisateur")
     public ResponseEntity<String> deleteUserById(@Valid @RequestBody User user){
         return new ResponseEntity<>(userService.deleteUserById(user),HttpStatus.OK);}
+    @CrossOrigin
     @PostMapping("/login")
    // @Operation(summary = "Connexion d'un utilisateur")
     public Object connexion(@RequestParam("email") String email,@RequestParam("motDePasse") String motDePasse) {
