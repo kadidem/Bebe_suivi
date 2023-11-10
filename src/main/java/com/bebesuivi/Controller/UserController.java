@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("user")
 @AllArgsConstructor
+@CrossOrigin
 public class UserController {
     private final UserService userService;
     @PostMapping("/create")
@@ -37,7 +38,8 @@ public class UserController {
     @PostMapping("/login")
    // @Operation(summary = "Connexion d'un utilisateur")
     public Object connexion(@RequestParam("email") String email,@RequestParam("motDePasse") String motDePasse) {
-
+        System.out.println(email);
+        System.out.println(motDePasse);
         return userService.connectionUser(email, motDePasse);
     }
 }
