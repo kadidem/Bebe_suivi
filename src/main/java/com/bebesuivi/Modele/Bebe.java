@@ -10,21 +10,17 @@ import java.util.List;
 
 @Entity
 @Data
-public class Grossesse {
+public class Bebe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idGrossesse;
+    private long idBebe;
     @Column(nullable = false)
-    private LocalDate dateDernierRegle;
+    private LocalDate dateNaissance;
     @Column(nullable = false)
-    private LocalDate dateAcouchement;
+    private String nomPrenom;
     @Column(nullable = false)
-    private Integer poids;
-    @Column(nullable = false)
-    private Integer age;
+    private String sexe;
+
     @ManyToOne
-    private User user;
-    @OneToMany(mappedBy = "grossesse",cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Bebe> bebeList = new ArrayList<>();
+    private Grossesse grossesse;
 }
