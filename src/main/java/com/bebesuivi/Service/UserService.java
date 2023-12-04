@@ -63,4 +63,23 @@ public class UserService {
         // Authentification réussie, retourner l'utilisateur
         return utilisateur;
     }
+//    public void ajouterDocteursAUtilisateur(Long userId, List<Docteur> docteurs) {
+//        User utilisateur = userRepository.findById(userId)
+//                .orElseThrow(() -> new EntityNotFoundException("Utilisateur non trouvé avec l'ID : " + userId));
+//
+//        // Ajouter les nouveaux docteurs à la liste existante
+//        utilisateur.getDocteurList().addAll(docteurs);
+//
+//        // Enregistrer l'utilisateur mis à jour dans la base de données
+//        userRepository.save(utilisateur);
+//    }
+//    public void addToFavorites(User user, Docteur docteur) {
+//        MesDocteurs mesDocteur = new MesDocteurs();
+//        mesDocteur.setUser(user);
+//        mesDocteur.setDocteur(docteur);
+//
+//
+//
+//        mesDocteurRepository.save(mesDocteur);
+//    }
 }

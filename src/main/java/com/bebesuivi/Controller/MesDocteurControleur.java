@@ -11,7 +11,7 @@
 //import org.springframework.web.bind.annotation.*;
 //
 //@RestController
-//@RequestMapping("/api/mesdocteurs")
+//@RequestMapping("/mesdocteurs")
 //public class MesDocteurControleur {
 //
 //    private final MesDocteurService mesDocteurService;

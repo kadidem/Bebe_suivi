@@ -11,15 +11,14 @@
 //@Data
 //@Entity
 //public class MesDocteurs {
+//
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    private long id;
 //
 //    @ManyToOne
-//    @JoinColumn(name = "user_id")
 //    private User user;
 //
 //    @ManyToOne
-//    @JoinColumn(name = "docteur_id")
 //    private Docteur docteur;
 //}

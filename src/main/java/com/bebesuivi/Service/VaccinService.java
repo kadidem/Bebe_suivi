@@ -1,7 +1,7 @@
 package com.bebesuivi.Service;
 
 import com.bebesuivi.Exception.NoContentException;
-import com.bebesuivi.Modele.Docteur;
+
 import com.bebesuivi.Modele.Grossesse;
 import com.bebesuivi.Modele.User;
 import com.bebesuivi.Modele.Vaccin;

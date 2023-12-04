@@ -3,6 +3,8 @@ package com.bebesuivi.Modele;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.util.List;
 
@@ -19,7 +21,7 @@ public class Docteur {
     @Column(nullable = false)
     private String Adresse;
     @Column(nullable = false)
-    private Integer Numero;
+    private int Numero;
     @Column(nullable = false, unique = true)
     private String motDePasse;
     @Column(nullable = false)
@@ -32,15 +34,17 @@ public class Docteur {
     private String adresseDuTravail;
     @Column(nullable = false)
     private boolean Valide;
+
     @OneToMany(mappedBy = "docteur", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<NotificationDocteur> notifications;
+
     @OneToMany(mappedBy = "docteur", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Rendez_vous> rendez_vous;
-//    @OneToMany
-////            (mappedBy = "docteur", cascade = CascadeType.ALL)
-//    @JsonIgnore
-//    private List<MesDocteurs> favoritedByUsers;
+//    @ManyToOne
+//    @JoinColumn(name = "idUser")
+//    private User user;
+
 
 }

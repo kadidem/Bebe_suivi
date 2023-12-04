@@ -1,5 +1,6 @@
 package com.bebesuivi.Controller;
 
+
 import com.bebesuivi.Modele.User;
 import com.bebesuivi.Service.UserService;
 import lombok.AllArgsConstructor;
@@ -47,4 +48,13 @@ public class UserController {
         System.out.println(motDePasse);
         return userService.connectionUser(email, motDePasse);
     }
+//    @PostMapping("/{userId}/addDocteurs")
+//    public ResponseEntity<String> ajouterDocteursAUtilisateur(
+//            @PathVariable Long userId,
+//            @RequestBody List<Docteur> docteurs) {
+//
+//        userService.ajouterDocteursAUtilisateur(userId, docteurs);
+//
+//        return ResponseEntity.ok("Docteurs ajoutés avec succès à l'utilisateur avec l'ID : " + userId);
+//    }
 }
