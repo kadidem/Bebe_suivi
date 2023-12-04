@@ -20,7 +20,15 @@ public class Bebe {
     private String nomPrenom;
     @Column(nullable = false)
     private String sexe;
-
     @ManyToOne
+    @JoinColumn(name = "idGrossesse", nullable = false)
     private Grossesse grossesse;
+    @OneToMany
+            ( mappedBy = "bebe", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Vaccin> vaccins;
+    @OneToMany
+            ( mappedBy = "bebe", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Poid> poids;
 }

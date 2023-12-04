@@ -1,10 +1,13 @@
 package com.bebesuivi.Controller;
 
+import com.bebesuivi.Exception.NoContentException;
 import com.bebesuivi.Modele.Grossesse;
 import com.bebesuivi.Modele.Medicament;
 import com.bebesuivi.Modele.User;
+import com.bebesuivi.Repository.GrossesseRepository;
 import com.bebesuivi.Service.GrossesseService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +21,10 @@ import java.util.List;
 @AllArgsConstructor
 
 public class GrossesseControleur {
-    private final GrossesseService grossesseService;
-
+    @Autowired
+      GrossesseService grossesseService;
+@Autowired
+    GrossesseRepository grossesseRepository;
     @PostMapping("/create")
     public ResponseEntity<Grossesse> createGrossesse(@Valid @RequestBody Grossesse grossesse){
         return new ResponseEntity<>(grossesseService.createGrossesse(grossesse), HttpStatus.OK);
@@ -30,10 +35,29 @@ public class GrossesseControleur {
     public ResponseEntity<List<Grossesse>> getgrossesse(){
         return new ResponseEntity<>(grossesseService.getAllGrossesse(),HttpStatus.OK);}
     @CrossOrigin
-    @GetMapping("/read/{id}")
+    @GetMapping("read/user/{idUser}")
+    public ResponseEntity<List<Grossesse>> getAllGrossesseByIdUser(@PathVariable Long idUser) {
+        try {
+            List<Grossesse> grossesses = grossesseService.getAllGrossesseByIdUser(idUser);
+            return new ResponseEntity<>(grossesses, HttpStatus.OK);
+        } catch (NoContentException e) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }}
+
+
+    @CrossOrigin
+    @GetMapping("/readEnCours/{userId}")
     // @Operation(summary = "Affichage  d'un utilisateur")
-    public ResponseEntity<Grossesse> getGrossesseById(@Valid @PathVariable long id){
-        return new ResponseEntity<>(grossesseService.getGrossesseById(id),HttpStatus.OK) ;}
+    public ResponseEntity<Grossesse> getGrossessesEnCours(@PathVariable long userId) {
+        try {
+            Grossesse currentGrossesse = grossesseService.getGrossessesEnCours(userId);
+            return ResponseEntity.ok(currentGrossesse);
+        } catch (NoContentException e) {
+            return ResponseEntity.noContent().build();
+        }
+    }
     @CrossOrigin
     @PutMapping("/update")
     //  @Operation(summary = "Modification d'un utilisateur")

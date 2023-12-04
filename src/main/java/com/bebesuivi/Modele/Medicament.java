@@ -21,4 +21,8 @@ public class Medicament {
     private Integer nbreDeJour;
     @Column(nullable = false)
     private LocalDate DateFin;
+    @ManyToOne
+    @JoinColumn(name = "idUser")
+    private User user;
+
 }

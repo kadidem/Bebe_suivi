@@ -32,6 +32,10 @@ public class BebeControleur {
     // @Operation(summary = "Affichage  d'un utilisateur")
     public ResponseEntity<Bebe> getBebeById(@Valid @PathVariable long id){
         return new ResponseEntity<>(bebeService.getBebeById(id),HttpStatus.OK) ;}
+    @GetMapping("/read/user/{idUser}")
+    public  ResponseEntity<List<Bebe>> getbebebyuser(@Valid @PathVariable long idUser){
+        return new ResponseEntity<>(bebeService.getAllBebeByUser(idUser),HttpStatus.OK);
+    }
     @CrossOrigin
     @PutMapping("/update")
     //  @Operation(summary = "Modification d'un utilisateur")

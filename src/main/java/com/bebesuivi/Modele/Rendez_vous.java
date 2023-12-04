@@ -5,6 +5,8 @@ import lombok.Data;
 import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Data
@@ -14,7 +16,14 @@ public class Rendez_vous {
     private Long idRdv;
     @Column(nullable = false, unique = true)
     private LocalDate dateRdv;
+    @Column(nullable = false, unique = true)
+    private LocalTime heurRdv;
     @Column(nullable = false)
     private String Descritpion;
-  
+    @ManyToOne
+    @JoinColumn(name = "iduser", nullable = false)
+    private User user;
+    @ManyToOne
+    @JoinColumn(name = "idDocteur", nullable = false)
+    private Docteur docteur;
 }

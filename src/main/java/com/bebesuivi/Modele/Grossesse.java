@@ -22,9 +22,12 @@ public class Grossesse {
     private Integer poids;
     @Column(nullable = false)
     private Integer age;
+    //@Column(nullable = false)
+   // private Integer nbreGrossesse;
     @ManyToOne
+    @JoinColumn(name = "idUser")
     private User user;
-    @OneToMany(mappedBy = "grossesse",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "grossesse", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Bebe> bebeList = new ArrayList<>();
 }

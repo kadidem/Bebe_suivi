@@ -23,7 +23,16 @@ public class User {
     private Integer Numero;
     @Column(nullable = false, unique = true)
     private String motDePasse;
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user")
     @JsonIgnore
-    private List<Grossesse> grossesses = new ArrayList<>();
+    private List<Grossesse> grossesses;
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Rendez_vous> rendez_vous;
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Medicament> medicaments;
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    @JsonIgnore
+//    private List<MesDocteurs> favoriteDocteurs;
 }

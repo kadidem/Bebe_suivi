@@ -1,6 +1,7 @@
 package com.bebesuivi.Service;
 
 import com.bebesuivi.Exception.NoContentException;
+import com.bebesuivi.Modele.Grossesse;
 import com.bebesuivi.Modele.Medicament;
 import com.bebesuivi.Modele.User;
 import com.bebesuivi.Repository.MedicamentRepository;
@@ -33,6 +34,16 @@ public class MedicamentService {
         List<Medicament> medicaments = medicamentRepository.findAll();
         if (medicaments.isEmpty())
             throw new NoContentException("Aucun medicament trouvé");
+        return medicaments;
+    }
+    public List<Medicament> getAllMedicamentByIdUser(long idUser) {
+
+        List<Medicament> medicaments = medicamentRepository.findByUser_IdUser(idUser);
+
+        if (medicaments.isEmpty()) {
+            throw new NoContentException("Aucune grossesse trouvée pour l'utilisateur avec l'ID : " + idUser);
+        }
+
         return medicaments;
     }
     public Medicament getMedicamentById(long idMedicaement){
